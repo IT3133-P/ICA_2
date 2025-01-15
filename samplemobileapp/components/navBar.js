@@ -9,7 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Student from '../page/Student';
 
 
-export default function NavBar() {
+export default function NavBar({route}) {
 
   const Stack = createBottomTabNavigator() 
   return (

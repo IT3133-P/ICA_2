@@ -8,16 +8,32 @@ export default function Home({ route }) {
     const navigation = useNavigation()
     const [allStudent, setAllStudent] = useState([])
 
+    const jj = route.params?.newStuArray
+
+    console.log(jj)
+
+
     useEffect(() => {
         if(route.params?.newStuArray) {
             const newStudent = route.params?.newStuArray
-            setAllStudent((pre) => ([...pre, newStudent]))
+            if(allStudent.length > 0) {
+                const temp = allStudent.filter((item) => item.id !== newStudent.id)
+                setAllStudent(temp)
+                setAllStudent((pre) => ([...pre, newStudent]))
+            }
+            else {
+                setAllStudent((pre) => ([...pre, newStudent]))
+            }
         }
     },[route.params?.newStuArray])
 
     function deleteStudent(stuId) {
         const updatedStuArray = allStudent.filter((stu) => stu.id !== stuId)
         setAllStudent(updatedStuArray)
+    }
+
+    function addStudent() {
+        navigation.navigate('student')
     }
 
     return (
@@ -45,8 +61,8 @@ export default function Home({ route }) {
                     )
                 }
             </View>
-            <View >
-
+            <View style={styles.footer}>
+                <Button onPress={() => {addStudent()}}>AddStudent</Button>
             </View>
            
         </View>
@@ -68,6 +84,11 @@ const styles = StyleSheet.create({
         flex: 5,
         backgroundColor: 'lightblue',
         padding:10
+    },
+    footer: {
+        flex: 1,
+        backgroundColor: 'lightgreen',
+        justifyContent: 'center'
     },
     card:{
         flex:1,

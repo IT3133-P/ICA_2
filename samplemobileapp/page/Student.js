@@ -25,7 +25,7 @@ export default function Student() {
     function addStudent() {
 
         if(student.id !== '' && student.name !== '' && student.age !== '') {
-            navigation.navigate('home', {newStuArray:student})
+            navigation.popTo('home', {newStuArray:student})
             setStudent({
                 id:'',
                 name:'',
