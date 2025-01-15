@@ -2,8 +2,9 @@ import { PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import NavBar from './components/navBar';
 import Profile from './page/Profile';
+import Home from './page/Home';
+import Student from './page/Student';
 
 
 export default function App() {
@@ -14,9 +15,10 @@ export default function App() {
     <SafeAreaProvider>
       <PaperProvider>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName='navbar' screenOptions={{headerTitleAlign:'center'}} >
-            <Stack.Screen name='navbar' component={NavBar} options={{title:'Student'}}/> 
-            <Stack.Screen name='profile' component={Profile} options={{title:'Student'}}/> 
+          <Stack.Navigator initialRouteName='home' screenOptions={{headerTitleAlign:'center'}} >
+            <Stack.Screen name='home' component={Home} options={{title:'Home'}}/> 
+            <Stack.Screen name='profile' component={Profile} options={{title:'Profile'}}/> 
+            <Stack.Screen name='student' component={Student} options={{title:'Profile'}}/> 
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>
