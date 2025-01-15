@@ -18,7 +18,15 @@ export default function Profile({ route }) {
     })
 
     function updateStudent() {
-        navigation.popTo('home', { newStuArray: student })
+        if(student.name === '') {
+            student.name = studentDetails.name
+        }
+        if(student.age === '') {
+            student.age = studentDetails.age
+        }
+        if(student.name && student.age) {
+            navigation.popTo('home', { newStuArray: student })
+        }
     }
 
     function inputHandel(char, field) {
