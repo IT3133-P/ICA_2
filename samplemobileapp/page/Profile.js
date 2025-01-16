@@ -9,12 +9,11 @@ export default function Profile({ route }) {
 
     const studentDetails = route.params?.studentDetails
     const [updateStatus, setUpdateStatus] = useState(false)
-    const [error, setError] = useState('')
 
     const [student, setStudent] = useState({
         id: studentDetails.id,
-        name: "",
-        age: ""
+        name: studentDetails.name,
+        age: studentDetails.age
     })
 
     function updateStudent() {
@@ -50,7 +49,7 @@ export default function Profile({ route }) {
                             <Text style={{textAlign:'center'}}>Id : {studentDetails.id}</Text>
                             <Text style={{textAlign:'center'}}>Name : {studentDetails.name}</Text>
                             <Text style={{textAlign:'center'}}>Age : {studentDetails.age}</Text>
-                            <Button onPress={() => { setUpdateStatus(!updateStatus) }}>Add Student</Button>
+                            <Button mode="outlined" onPress={() => { setUpdateStatus(!updateStatus) }}>Update Student Details</Button>
                             {
                                 updateStatus ? (
                                     <View style={styles.form}>
@@ -64,7 +63,7 @@ export default function Profile({ route }) {
                                             value={student.age}
                                             onChangeText={(char) => { inputHandel(char, 'age') }}
                                         />
-                                        <Button onPress={() => { updateStudent() }}>Done</Button>
+                                        <Button mode="outlined" onPress={() => { updateStudent() }}>Done</Button>
                                     </View>
                                 ) : (
                                     <></>

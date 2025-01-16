@@ -8,11 +8,6 @@ export default function Home({ route }) {
     const navigation = useNavigation()
     const [allStudent, setAllStudent] = useState([])
 
-    const jj = route.params?.newStuArray
-
-    console.log(jj)
-
-
     useEffect(() => {
         if(route.params?.newStuArray) {
             const newStudent = route.params?.newStuArray
@@ -62,7 +57,7 @@ export default function Home({ route }) {
                 }
             </View>
             <View style={styles.footer}>
-                <Button onPress={() => {addStudent()}}>AddStudent</Button>
+                <Button mode="outlined" onPress={() => {addStudent()}}>AddStudent</Button>
             </View>
            
         </View>

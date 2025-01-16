@@ -60,7 +60,7 @@ export default function Student() {
                     onChangeText={(char) => {inputHandel(char,'age')}}
                 />
 
-                <Button onPress={() => {addStudent()}}>Add Student</Button>
+                <Button mode="outlined" onPress={() => {addStudent()}}>Add Student</Button>
                 {
                     error ? (
                         <Text>{error}</Text>
