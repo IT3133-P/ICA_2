@@ -8,33 +8,10 @@ export default function Profile({ route }) {
     const navigation = useNavigation();
 
     const studentDetails = route.params?.studentDetails
-    const [updateStatus, setUpdateStatus] = useState(false)
 
-    const [student, setStudent] = useState({
-        id: studentDetails.id,
-        name: studentDetails.name,
-        age: studentDetails.age
-    })
+    function stuUpdate() {
 
-    function updateStudent() {
-        if(student.name === '') {
-            student.name = studentDetails.name
-        }
-        if(student.age === '') {
-            student.age = studentDetails.age
-        }
-        if(student.name && student.age) {
-            navigation.popTo('home', { newStuArray: student })
-        }
-    }
-
-    function inputHandel(char, field) {
-
-        setStudent((pre) => ({
-            ...pre,
-            [field]: char
-        }))
-
+        navigation.navigate('addstudent', {studentDetails:studentDetails})
     }
 
     return (
@@ -49,30 +26,12 @@ export default function Profile({ route }) {
                             <Text style={{textAlign:'center'}}>Id : {studentDetails.id}</Text>
                             <Text style={{textAlign:'center'}}>Name : {studentDetails.name}</Text>
                             <Text style={{textAlign:'center'}}>Age : {studentDetails.age}</Text>
-                            <Button mode="outlined" onPress={() => { setUpdateStatus(!updateStatus) }}>Update Student Details</Button>
-                            {
-                                updateStatus ? (
-                                    <View style={styles.form}>
-                                        <TextInput
-                                            label={'Name'}
-                                            value={student.name}
-                                            onChangeText={(char) => { inputHandel(char, 'name') }}
-                                        />
-                                        <TextInput
-                                            label={'Age'}
-                                            value={student.age}
-                                            onChangeText={(char) => { inputHandel(char, 'age') }}
-                                        />
-                                        <Button mode="outlined" onPress={() => { updateStudent() }}>Done</Button>
-                                    </View>
-                                ) : (
-                                    <></>
-                                )
-                            }
+                            <Button mode="outlined" onPress={() => {stuUpdate()}}>Update Student Details</Button>
                         </Card>
                     ) : (
-                        <Text style={{ textAlign: 'center' }}>Student deails is not available</Text>
+                        <></>
                     )
+                    
                 }
             </View>
             <View >
