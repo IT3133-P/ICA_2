@@ -6,12 +6,10 @@ import { Text, Card, Button, TextInput } from "react-native-paper";
 export default function Profile({ route }) {
 
     const navigation = useNavigation();
+    const studentDetails = route.params?.studentDetails//get stu data from home page for showing
 
-    const studentDetails = route.params?.studentDetails
-
-    function stuUpdate() {
-
-        navigation.navigate('addstudent', {studentDetails:studentDetails})
+    function stuUpdate() { // go to student update page for updating existing stu(send the stu data to the upadate stu page)
+        navigation.navigate('updatestu', {studentDetails:studentDetails})
     }
 
     return (

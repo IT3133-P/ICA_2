@@ -6,15 +6,15 @@ import { useNavigation } from "@react-navigation/native";
 export default function AddStudent({route}) {
 
     const navigation = useNavigation();
-    const studentDetails = route.params?.studentDetails
+    const studentDetails = route.params?.studentDetails//get the stu data that comes from profile page
 
-    const [student, setStudent] = useState({
+    const [student, setStudent] = useState({//initialy the stu tructure has asigned the stu data that comes from profile page
         id: studentDetails.id,
         name: studentDetails.name,
         age: studentDetails.age
     })
 
-    function inputHandel(char, field) {
+    function inputHandel(char, field) {//when on change text input, fields will be updated
 
         setStudent((pre) => ({
             ...pre,
@@ -23,7 +23,7 @@ export default function AddStudent({route}) {
 
     }
 
-    function updateStudent() {
+    function updateStudent() {//update the exist stu and sent the data to the home page
         if(student.name === '') {
             student.name = studentDetails.name
         }

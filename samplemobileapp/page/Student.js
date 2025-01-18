@@ -7,13 +7,14 @@ export default function Student() {
 
     const navigation = useNavigation();
     const [error, setError] = useState('') 
-    const [student, setStudent] = useState({
+
+    const [student, setStudent] = useState({//stu structure
         id:"",
         name:"",
         age:""
     })
 
-    function inputHandel(char, field) {
+    function inputHandel(char, field) {//when on change text input, fields will be updated
 
         setStudent((pre) => ({
             ...pre,
@@ -22,7 +23,7 @@ export default function Student() {
 
     }
 
-    function addStudent() {
+    function addStudent() { //add stu funtion( send the new stu data into home page)
 
         if(student.id !== '' && student.name !== '' && student.age !== '') {
             navigation.popTo('home', {newStuArray:student})

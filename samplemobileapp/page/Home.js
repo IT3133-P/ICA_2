@@ -9,10 +9,12 @@ export default function Home({ route }) {
     const [allStudent, setAllStudent] = useState([])
 
     useEffect(() => {
+
         if(route.params?.newStuArray) {
-            const newStudent = route.params?.newStuArray
+
+            const newStudent = route.params?.newStuArray// get value from the other page
             if(allStudent.length > 0) {
-                const temp = allStudent.filter((item) => item.id !== newStudent.id)
+                const temp = allStudent.filter((item) => item.id !== newStudent.id)// if the stu is exist then update that stu, if the stu is not exist then add the stu
                 setAllStudent(temp)
                 setAllStudent((pre) => ([...pre, newStudent]))
             }
@@ -22,12 +24,12 @@ export default function Home({ route }) {
         }
     },[route.params?.newStuArray])
 
-    function deleteStudent(stuId) {
+    function deleteStudent(stuId) { // delete stu
         const updatedStuArray = allStudent.filter((stu) => stu.id !== stuId)
         setAllStudent(updatedStuArray)
     }
 
-    function addStudent() {
+    function addStudent() { // go to add student page
         navigation.navigate('student')
     }
 
